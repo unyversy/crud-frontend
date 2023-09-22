@@ -1,0 +1,141 @@
+<app-header></app-header>
+<form action="" [formGroup]="formularioAlumnos">
+  <div class="p-inputgroup p-m-2">
+    <span class="p-inputgroup-addon">
+      <i class="pi pi-user"></i>
+    </span>
+    <input pInputText placeholder="ID" formControlName="numDocumento" (blur)="showError('numDocumento')" />
+    <div *ngIf="(formularioAlumnos.get('numDocumento')?.hasError('required') && submitted == true) ||
+      (formularioAlumnos.get('numDocumento')?.touched && formularioAlumnos.get('numDocumento')?.hasError('required'))" class="p-error">
+      El campo ID es obligatorio.
+    </div>
+    <div *ngIf="(formularioAlumnos.get('numDocumento')?.hasError('pattern') && submitted == true) ||
+      (formularioAlumnos.get('numDocumento')?.touched && formularioAlumnos.get('numDocumento')?.hasError('pattern'))" class="p-error">
+      El campo solo puede contener numeros.
+    </div>
+  </div>
+
+  <div class="p-inputgroup p-m-2">
+    <span class="p-inputgroup-addon">
+        <i class="pi pi-user"></i>
+    </span>
+    <input pInputText placeholder="Nombre" formControlName="nombre" (blur)="showError('nombre')" />
+    <div *ngIf="(formularioAlumnos.get('nombre')?.hasError('required') && submitted == true) ||
+      (formularioAlumnos.get('nombre')?.touched && formularioAlumnos.get('nombre')?.hasError('required'))" class="p-error">
+      El campo nombre es obligatorio.
+    </div>
+    <div *ngIf="(formularioAlumnos.get('nombre')?.hasError('pattern') && submitted == true) ||
+      (formularioAlumnos.get('nombre')?.touched && formularioAlumnos.get('nombre')?.hasError('pattern'))" class="p-error">
+      El campo solo puede contener letras.
+    </div>
+  </div>
+
+  <div class="p-inputgroup p-m-2">
+    <span class="p-inputgroup-addon">
+        <i class="pi pi-user"></i>
+    </span>
+    <input pInputText placeholder="Apellido" formControlName="apellido" (blur)="showError('apellido')" />
+    <div *ngIf="(formularioAlumnos.get('apellido')?.hasError('required') && submitted == true) ||
+      (formularioAlumnos.get('apellido')?.touched && formularioAlumnos.get('apellido')?.hasError('required'))" class="p-error">
+      El campo apellido es obligatorio.
+    </div>
+    <div *ngIf="(formularioAlumnos.get('apellido')?.hasError('pattern') && submitted == true) ||
+      (formularioAlumnos.get('apellido')?.touched && formularioAlumnos.get('apellido')?.hasError('pattern'))" class="p-error">
+      El campo solo puede contener letras.
+    </div>
+  </div>
+
+  <div class="p-inputgroup p-m-2">
+    <span class="p-inputgroup-addon">
+        <i class="pi pi-user"></i>
+    </span>
+    <input pInputText placeholder="Correo Electronico" formControlName="correo" (blur)="showError('correo')" />
+    <div *ngIf="(formularioAlumnos.get('correo')?.hasError('required') && submitted == true) ||
+      (formularioAlumnos.get('correo')?.touched && formularioAlumnos.get('correo')?.hasError('required'))" class="p-error">
+      El campo correo es obligatorio.
+    </div>
+    <div *ngIf="(formularioAlumnos.get('correo')?.hasError('email') && submitted == true) ||
+      (formularioAlumnos.get('correo')?.touched && formularioAlumnos.get('correo')?.hasError('email'))" class="p-error">
+      Favor de ingresar un correo valido.
+    </div>
+  </div>
+
+  <p-button label="Crear" (click)="crearAlumno()"></p-button>
+</form>
+
+
+<p-table [value]="alumnos" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Correo Electronico</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-alumno>
+      <tr>
+          <td>{{ alumno.numDocumento }}</td>
+          <td>{{ alumno.nombre }}</td>
+          <td>{{ alumno.apellido }}</td>
+          <td>{{ alumno.correoElectronico }}</td>
+          <td><p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-success p-button-text" (click)="activador(alumno)"></p-button></td>
+          <td><p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-text"  (click)="eliminarAlumno(alumno.numDocumento)"></p-button></td>
+
+      </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog header="Header" [(visible)]="display">
+  <form action="" [formGroup]="formularioAlumnos">
+    <div class="p-inputgroup p-m-2">
+      <span class="p-inputgroup-addon">
+          <i class="pi pi-user"></i>
+      </span>
+      <input pInputText placeholder="Nombre" formControlName="nombre"/>
+      <div *ngIf="(formularioAlumnos.get('nombre')?.hasError('required') && submitted == true) ||
+        (formularioAlumnos.get('nombre')?.touched && formularioAlumnos.get('nombre')?.hasError('required'))" class="p-error">
+        El campo nombre es obligatorio.
+      </div>
+      <div *ngIf="(formularioAlumnos.get('nombre')?.hasError('pattern') && submitted == true) ||
+        (formularioAlumnos.get('nombre')?.touched && formularioAlumnos.get('nombre')?.hasError('pattern'))" class="p-error">
+        El campo solo puede contener letras.
+      </div>
+    </div>
+
+    <div class="p-inputgroup p-m-2">
+      <span class="p-inputgroup-addon">
+          <i class="pi pi-user"></i>
+      </span>
+      <input pInputText placeholder="Apellido" formControlName="apellido" />
+      <div *ngIf="(formularioAlumnos.get('apellido')?.hasError('required') && submitted == true) ||
+        (formularioAlumnos.get('apellido')?.touched && formularioAlumnos.get('apellido')?.hasError('required'))" class="p-error">
+        El campo apellido es obligatorio.
+      </div>
+      <div *ngIf="(formularioAlumnos.get('apellido')?.hasError('pattern') && submitted == true) ||
+        (formularioAlumnos.get('apellido')?.touched && formularioAlumnos.get('apellido')?.hasError('pattern'))" class="p-error">
+        El campo solo puede contener letras.
+      </div>
+    </div>
+
+    <div class="p-inputgroup p-m-2">
+      <span class="p-inputgroup-addon">
+          <i class="pi pi-user"></i>
+      </span>
+      <input pInputText placeholder="Correo Electronico" formControlName="correo"/>
+      <div *ngIf="(formularioAlumnos.get('correo')?.hasError('required') && submitted == true) ||
+        (formularioAlumnos.get('correo')?.touched && formularioAlumnos.get('correo')?.hasError('required'))" class="p-error">
+        El campo correo es obligatorio.
+      </div>
+      <div *ngIf="(formularioAlumnos.get('correo')?.hasError('email') && submitted == true) ||
+        (formularioAlumnos.get('correo')?.touched && formularioAlumnos.get('correo')?.hasError('email'))" class="p-error">
+        Favor de ingresar un correo valido.
+      </div>
+    </div>
+
+
+    <p-button label="Actualizar" (click)="actualizarAlumno()"></p-button>
+  </form>
+</p-dialog>
