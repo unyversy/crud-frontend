@@ -1,6 +1,28 @@
-# FrontCrud
+# Proyecto CRUD de Estudiantes con Angular y PrimeNG
+
+Este es un proyecto de ejemplo que demuestra cómo desarrollar una interfaz de usuario simple con Angular y PrimeNG para interactuar con una API RESTful de estudiantes creada en la Parte 1 del proyecto.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+
+## Características
+Interfaz de Usuario: Desarrollamos una interfaz de usuario amigable que permite a los usuarios interactuar con la API para realizar operaciones CRUD en estudiantes.
+
+Validación en el Cliente: Implementamos validaciones en los formularios para garantizar que los datos enviados al backend cumplan con ciertos criterios (por ejemplo, campos obligatorios y formatos válidos).
+
+Pruebas Unitarias: Escribimos pruebas unitarias para los componentes de Angular para garantizar la calidad y confiabilidad del código.
+
+## Configuración
+## Requisitos Previos
+Antes de comenzar, asegúrate de tener instalado:
+
+Node.js y npm
+Angular CLI
+PrimeNG
+Instalación de Dependencias
+Para instalar las dependencias del proyecto, ejecuta los siguientes comandos en el directorio raíz del proyecto:
+npm install
+npm install primeng --save
+npm install primeicons --save
 
 ## Development server
 
